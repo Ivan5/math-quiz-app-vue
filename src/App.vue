@@ -1,27 +1,13 @@
 <template>
   <div id="app">
     <h1>Math Quiz App</h1>
-    {{ this.operator}}
-    <button @click="selectOperator('+')">
-      Addition
-      <br />+
-    </button>
-    <button @click="selectOperator('-')">
-      Subtraction
-      <br />-
-    </button>
-    <button @click="selectOperator('/')">
-      Division
-      <br />/
-    </button>
-    <button @click="selectOperator('*')">
-      Multiplication
-      <br />*
-    </button>
+    <OperatorSelectorVue @changeOperator="changeOperator" />
   </div>
 </template>
 
 <script>
+import OperatorSelectorVue from "./components/OperatorSelector.vue";
+
 export default {
   name: "app",
   data() {
@@ -30,11 +16,13 @@ export default {
     };
   },
   methods: {
-    selectOperator(operator) {
+    changeOperator(operator) {
       this.operator = operator;
     }
   },
-  components: {}
+  components: {
+    OperatorSelectorVue
+  }
 };
 </script>
 
